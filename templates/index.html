@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Processing</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Text Processing</h1>
+        <form action="/process" method="post">
+            <textarea id="input-text" name="input_text" rows="10" placeholder="Enter text to process"></textarea><br>
+            <label for="task">Select task:</label>
+            <select id="task" name="task">
+                <option value="summarize">Summarize</option>
+                <option value="paraphrase">Paraphrase</option>
+            </select><br>
+            <label for="model">Select model:</label>
+            <select id="model" name="model">
+                <option value="BART">BART</option>
+                <option value="T5">T5</option>
+            </select><br>
+            <button type="submit">Process</button>
+        </form>
+        {% if input_text %}
+        <h2>Input Text:</h2>
+        <p>{{ input_text }}</p>
+        {% endif %}
+        {% if result %}
+        <h2>Result:</h2>
+        <p>{{ result }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
